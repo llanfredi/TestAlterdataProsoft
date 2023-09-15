@@ -19,6 +19,60 @@ namespace Infrastructure.Mappings
             base.Configure(builder);
 
             builder.Property(x => x.DescTipoDev).IsRequired();
+
+            builder.HasData(new TipoDevEntity 
+            {
+                Id = Guid.NewGuid(),
+                DescTipoDev = "Estágiário",
+                CreatedBy = 1,
+                CreatedDate = DateTime.Now,
+                Active = true,
+            });
+
+            builder.HasData(new TipoDevEntity
+            {
+                Id = Guid.NewGuid(),
+                DescTipoDev = "Estágiário",
+                CreatedBy = 1,
+                CreatedDate = DateTime.Now,
+                Active = true,
+            });
+
+            builder.HasData(new TipoDevEntity
+            {
+                Id = Guid.NewGuid(),
+                DescTipoDev = "Júnior",
+                CreatedBy = 1,
+                CreatedDate = DateTime.Now,
+                Active = true,
+            });
+
+            builder.HasData(new TipoDevEntity
+            {
+                Id = Guid.NewGuid(),
+                DescTipoDev = "Pleno",
+                CreatedBy = 1,
+                CreatedDate = DateTime.Now,
+                Active = true,
+            });
+
+            builder.HasData(new TipoDevEntity
+            {
+                Id = Guid.NewGuid(),
+                DescTipoDev = "Sênior",
+                CreatedBy = 1,
+                CreatedDate = DateTime.Now,
+                Active = true,
+            });
+
+            builder.HasData(new TipoDevEntity
+            {
+                Id = Guid.NewGuid(),
+                DescTipoDev = "Especialista",
+                CreatedBy = 1,
+                CreatedDate = DateTime.Now,
+                Active = true,
+            });
         }
     }
 }

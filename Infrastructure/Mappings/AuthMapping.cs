@@ -21,6 +21,17 @@ namespace Infrastructure.Mappings
             builder.Property(x => x.Nome).IsRequired();
             builder.Property(x => x.Login).IsRequired();
             builder.Property(x => x.Senha).IsRequired();
+
+            builder.HasData(new AuthEntity
+            {
+                Id = Guid.NewGuid(),
+                Nome = "Leandro Lanfredi",
+                Login = "llanfredi",
+                Senha = "123456",
+                CreatedBy = 1,
+                CreatedDate = DateTime.Now,
+                Active = true
+            });
         }
     }
 }
