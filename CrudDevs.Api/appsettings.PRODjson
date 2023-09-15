@@ -1,0 +1,5 @@
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=llanfredi; Database=DBCadDev; User Id=llanfredi; Password=D@nceofdeath84"
+  }
+}
