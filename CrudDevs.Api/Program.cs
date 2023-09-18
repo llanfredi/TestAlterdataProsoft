@@ -1,12 +1,8 @@
 using AutoMapper;
 using Infrastructure.Configuration.Configuration;
-using Infrastructure.DB;
 using Infrastructure.IOC.Extensions;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Serilog;
 using Service.AutoMapper;
@@ -25,7 +21,6 @@ builder.Services.AddSingleton(logger);
 builder.Services.AddControllers();
 builder.Services.AddCors();
 builder.Services.AddEndpointsApiExplorer();
-//builder.Services.AddHealthChecks();
 builder.Services.AddBaseServices(builder.Configuration);
 builder.Services.AddHttpContextAccessor();
 builder.Services.ConfigureRequestLocation();
@@ -41,11 +36,7 @@ builder.Services.AddSingleton(mapper);
 
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
 
-//var secretService = new SecretService(builder.Configuration);
-//string jwtSecretKey = await secretService.GetJwtSecretKeyAsync("jwt_token", AwsConfiguration.Current.Region);
-
-if (EnvironmentConfiguration.NotProd())
-    builder.Services.ConfigureSwagger();
+builder.Services.ConfigureSwagger();
 
 builder.Services.AddAuthentication(_ =>
 {
@@ -71,22 +62,15 @@ builder.Services.AddAuthorization(options =>
     options.DefaultPolicy = defaultAuthorizationPolicyBuilder.Build();
 });
 
-//services
-//builder.Services.AddScoped<IKiprevService, KiprevService>();
-
 //Application
 var app = builder.Build();
 
-//if (app.Environment.IsDevelopment())
-//{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-//}
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.MapControllers();
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseHttpsRedirection();
-//app.ConfigureHealthCheck();
 
 app.Run();

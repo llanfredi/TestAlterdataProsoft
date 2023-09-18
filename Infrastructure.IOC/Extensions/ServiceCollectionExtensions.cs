@@ -2,7 +2,6 @@
 using Infrastructure.DB;
 using Infrastructure.Security.Interface;
 using Infrastructure.Security.Service;
-using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
@@ -14,7 +13,6 @@ using Service.Interface;
 using Service.Service;
 using System.Data.Common;
 using System.Globalization;
-using System.Reflection;
 
 namespace Infrastructure.IOC.Extensions
 {
