@@ -89,7 +89,7 @@ namespace Infrastructure.IOC.Extensions
             services.AddScoped<IDevService, DevService>();
             services.AddScoped<ILoginService, LoginService>();
             services.AddScoped<ISecurityService, SecurityService>();
-            //services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
+            services.AddScoped<ITipoDevService, TipoDevService>();
 
             return services;
         }
