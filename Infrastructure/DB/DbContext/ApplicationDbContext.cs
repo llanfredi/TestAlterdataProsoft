@@ -83,8 +83,8 @@ namespace Infrastructure.DB
             if(entry.Property("UpdatedDate") != null)
                 entry.Property("UpdatedDate").CurrentValue = currentDate;
 
-            if (entry.Property("UpdateBy") != null)
-                entry.Property("UpdateBy").CurrentValue = GetCurrentUser();
+            if (entry.Property("UpdatedBy") != null)
+                entry.Property("UpdatedBy").CurrentValue = GetCurrentUser();
         }
 
         private int GetCurrentUser() 

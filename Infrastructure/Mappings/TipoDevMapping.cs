@@ -20,15 +20,6 @@ namespace Infrastructure.Mappings
 
             builder.Property(x => x.DescTipoDev).IsRequired();
 
-            builder.HasData(new TipoDevEntity 
-            {
-                Id = Guid.NewGuid(),
-                DescTipoDev = "Estágiário",
-                CreatedBy = 1,
-                CreatedDate = DateTime.Now,
-                Active = true,
-            });
-
             builder.HasData(new TipoDevEntity
             {
                 Id = Guid.NewGuid(),

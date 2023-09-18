@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="MediatR" Version="12.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.22" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.22">
       <PrivateAssets>all</PrivateAssets>
@@ -27,6 +28,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Infrastructure.Configuration\Infrastructure.Configuration.csproj" />
     <ProjectReference Include="..\Infrastructure.IOC\Infrastructure.IOC.csproj" />
+    <ProjectReference Include="..\Service\Service.csproj" />
   </ItemGroup>
 
 </Project>

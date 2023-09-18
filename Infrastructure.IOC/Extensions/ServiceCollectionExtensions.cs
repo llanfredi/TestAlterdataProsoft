@@ -1,12 +1,18 @@
 ﻿using Infrastructure.Configuration.Configuration;
 using Infrastructure.DB;
+using Infrastructure.Security.Interface;
+using Infrastructure.Security.Service;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using Serilog;
+using Service.Interface;
+using Service.Service;
 using System.Globalization;
+using System.Reflection;
 
 namespace Infrastructure.IOC.Extensions
 {
@@ -80,6 +86,10 @@ namespace Infrastructure.IOC.Extensions
         public static IServiceCollection AddCustomServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddSingleton(Log.Logger);
+            services.AddScoped<IDevService, DevService>();
+            services.AddScoped<ILoginService, LoginService>();
+            services.AddScoped<ISecurityService, SecurityService>();
+            //services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
 
             return services;
         }
@@ -89,10 +99,6 @@ namespace Infrastructure.IOC.Extensions
             var applicationConfiguration = new ApplicationConfiguration();
             configuration.Bind("Application", applicationConfiguration);
             services.AddSingleton(applicationConfiguration);
-
-            //var awsConfiguration = new AwsConfiguration();
-            //configuration.Bind("AWS", awsConfiguration);
-            //services.AddSingleton(awsConfiguration);
 
             return services;
         }

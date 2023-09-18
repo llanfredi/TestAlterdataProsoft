@@ -1,10 +1,8 @@
 ﻿using Domain.Entities;
+using Infrastructure.Security;
+using Infrastructure.Security.Interface;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
 
 namespace Infrastructure.Mappings
 {
@@ -27,11 +25,11 @@ namespace Infrastructure.Mappings
                 Id = Guid.NewGuid(),
                 Nome = "Leandro Lanfredi",
                 Login = "llanfredi",
-                Senha = "123456",
+                Senha = Crypt.EncryptString("ab2d6871d5914518a8adfbe525ab51b5", "123456"),
                 CreatedBy = 1,
                 CreatedDate = DateTime.Now,
                 Active = true
-            });
+            }); ;
         }
     }
 }

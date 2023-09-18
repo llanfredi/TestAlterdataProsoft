@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="11.7.1" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.22" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="6.0.22" />
@@ -24,6 +25,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj" />
+    <ProjectReference Include="..\Infrastructure.Security\Infrastructure.Security.csproj" />
   </ItemGroup>
 
 </Project>

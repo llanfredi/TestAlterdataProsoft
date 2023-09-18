@@ -23,9 +23,10 @@ namespace Infrastructure.Mappings
             builder.Property(x => x.Endereco).IsRequired();
             builder.Property(x => x.Cidade).IsRequired();
             builder.Property(x => x.Estado).IsRequired();
+            builder.Property(x => x.Email).IsRequired();
             builder.Property(x => x.IdTipoDev).IsRequired();
 
-            builder.HasOne(x => x.TipoDev).WithOne().HasForeignKey<DevEntity>(x => x.Id);
+            builder.HasOne(x => x.TipoDev).WithMany().HasForeignKey(x => x.IdTipoDev);
         }
     }
 }

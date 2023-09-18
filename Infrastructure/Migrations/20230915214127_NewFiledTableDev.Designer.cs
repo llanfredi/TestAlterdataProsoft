@@ -4,6 +4,7 @@ using Infrastructure.DB;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230915214127_NewFiledTableDev")]
+    partial class NewFiledTableDev
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -64,10 +66,10 @@ namespace Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("c33345f9-c938-4a40-8024-7065293a458b"),
+                            Id = new Guid("7d3512b7-6179-4283-914d-47f29110facc"),
                             Active = true,
                             CreatedBy = 1,
-                            CreatedDate = new DateTime(2023, 9, 18, 0, 21, 51, 156, DateTimeKind.Local).AddTicks(8575),
+                            CreatedDate = new DateTime(2023, 9, 15, 18, 41, 25, 936, DateTimeKind.Local).AddTicks(4313),
                             Login = "llanfredi",
                             Nome = "Leandro Lanfredi",
                             Senha = "9N1RJ4v/JxP6S23Lg8STzA=="
@@ -121,8 +123,6 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("IdTipoDev");
-
                     b.ToTable("Dev", "DBCadDev");
                 });
 
@@ -159,42 +159,42 @@ namespace Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("302f808a-e9b0-4170-9dce-9c97fa096f62"),
+                            Id = new Guid("618d6115-7e38-4c7b-a950-ef7eb8b0410d"),
                             Active = true,
                             CreatedBy = 1,
-                            CreatedDate = new DateTime(2023, 9, 18, 0, 21, 51, 155, DateTimeKind.Local).AddTicks(2880),
+                            CreatedDate = new DateTime(2023, 9, 15, 18, 41, 25, 934, DateTimeKind.Local).AddTicks(6693),
                             DescTipoDev = "Estágiário"
                         },
                         new
                         {
-                            Id = new Guid("795494f1-decb-4c4b-ad22-c6ade9a30e1b"),
+                            Id = new Guid("874e8f79-5035-4a5e-853c-c75ecacebc0d"),
                             Active = true,
                             CreatedBy = 1,
-                            CreatedDate = new DateTime(2023, 9, 18, 0, 21, 51, 155, DateTimeKind.Local).AddTicks(2929),
+                            CreatedDate = new DateTime(2023, 9, 15, 18, 41, 25, 934, DateTimeKind.Local).AddTicks(6733),
                             DescTipoDev = "Júnior"
                         },
                         new
                         {
-                            Id = new Guid("1667edef-3bff-4093-9571-cf9b35100f8e"),
+                            Id = new Guid("73af6b0d-26e9-44e1-adf8-a454a5ef26da"),
                             Active = true,
                             CreatedBy = 1,
-                            CreatedDate = new DateTime(2023, 9, 18, 0, 21, 51, 155, DateTimeKind.Local).AddTicks(2944),
+                            CreatedDate = new DateTime(2023, 9, 15, 18, 41, 25, 934, DateTimeKind.Local).AddTicks(6742),
                             DescTipoDev = "Pleno"
                         },
                         new
                         {
-                            Id = new Guid("93a95c47-d4ba-446f-a1a4-1752f953ec61"),
+                            Id = new Guid("b2a9da96-a4a1-42e8-a6a5-69eb14d64a44"),
                             Active = true,
                             CreatedBy = 1,
-                            CreatedDate = new DateTime(2023, 9, 18, 0, 21, 51, 155, DateTimeKind.Local).AddTicks(2956),
+                            CreatedDate = new DateTime(2023, 9, 15, 18, 41, 25, 934, DateTimeKind.Local).AddTicks(6748),
                             DescTipoDev = "Sênior"
                         },
                         new
                         {
-                            Id = new Guid("aa03b612-6683-4b22-95fa-cffb250296c0"),
+                            Id = new Guid("d2038d02-7233-42e7-a366-ffdcd796bfa3"),
                             Active = true,
                             CreatedBy = 1,
-                            CreatedDate = new DateTime(2023, 9, 18, 0, 21, 51, 155, DateTimeKind.Local).AddTicks(2985),
+                            CreatedDate = new DateTime(2023, 9, 15, 18, 41, 25, 934, DateTimeKind.Local).AddTicks(6754),
                             DescTipoDev = "Especialista"
                         });
                 });
@@ -202,8 +202,8 @@ namespace Infrastructure.Migrations
             modelBuilder.Entity("Domain.Entities.DevEntity", b =>
                 {
                     b.HasOne("Domain.Entities.TipoDevEntity", "TipoDev")
-                        .WithMany()
-                        .HasForeignKey("IdTipoDev")
+                        .WithOne()
+                        .HasForeignKey("Domain.Entities.DevEntity", "Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
