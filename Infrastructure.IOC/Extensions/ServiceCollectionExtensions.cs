@@ -4,6 +4,7 @@ using Infrastructure.Security.Interface;
 using Infrastructure.Security.Service;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,6 +12,7 @@ using Microsoft.OpenApi.Models;
 using Serilog;
 using Service.Interface;
 using Service.Service;
+using System.Data.Common;
 using System.Globalization;
 using System.Reflection;
 
@@ -29,9 +31,10 @@ namespace Infrastructure.IOC.Extensions
 
         public static IServiceCollection AddDatabaseConfigurations(this IServiceCollection services, IConfiguration configuration)
         {
-            var connectionString = "Server=DESKTOP-49DBTQO; Database=DBCadDev; Trusted_Connection=True";
+            DbConnection connection = new SqlConnection(configuration.GetConnectionString("DefaultConnection"));
 
-            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connection,
+                                                                                        assembly => assembly.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
                                                                    
             return services;
         }

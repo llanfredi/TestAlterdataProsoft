@@ -1,8 +1,11 @@
 using AutoMapper;
 using Infrastructure.Configuration.Configuration;
+using Infrastructure.DB;
 using Infrastructure.IOC.Extensions;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Serilog;
