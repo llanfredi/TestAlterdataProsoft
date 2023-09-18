@@ -26,7 +26,7 @@ namespace Infrastructure.Mappings
                 Nome = "Leandro Lanfredi",
                 Login = "llanfredi",
                 Senha = Crypt.EncryptString("ab2d6871d5914518a8adfbe525ab51b5", "123456"),
-                CreatedBy = 1,
+                CreatedBy = Guid.NewGuid().ToString(),
                 CreatedDate = DateTime.Now,
                 Active = true
             }); ;

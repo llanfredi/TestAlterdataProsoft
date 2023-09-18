@@ -1,11 +1,8 @@
 using Domain.Commands.Requests;
-using Domain.Commands.Responses;
-using Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Service.Interface;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace CrudDevs.Api.Controllers
 {
@@ -30,7 +27,7 @@ namespace CrudDevs.Api.Controllers
         }
 
         [HttpGet("DevTest/Dev/{id}")]
-        public IActionResult Get([FromServices] IMediator _mediator, string id)
+        public IActionResult Get([FromServices] string id)
         {
             return Ok(_devService.GetById(new Guid(id)));
         }
@@ -47,7 +44,7 @@ namespace CrudDevs.Api.Controllers
             return Ok(_mediator.Send(command));
         }
 
-        [HttpDelete("DevTest/Dev/{id}")]
+        [HttpDelete("DevTest/Dev")]
         public IActionResult Delete(DeleteDevRequest command)
         {
             return Ok(_mediator.Send(command));

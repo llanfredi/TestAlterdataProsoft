@@ -2,7 +2,7 @@
 {
     public class NonEditableEntity : BaseEntity
     {
-        public int CreatedBy { get; set; }
+        public string CreatedBy { get; set; }
         public DateTime CreatedDate { get; set; }
 
         protected NonEditableEntity() 

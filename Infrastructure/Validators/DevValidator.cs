@@ -16,8 +16,12 @@ namespace Infrastructure.Validators
             RuleFor(x => x.Endereco).NotEmpty().WithMessage("Campo endereço não pode ser nulo");
             RuleFor(x => x.Cidade).NotEmpty().WithMessage("Campo cidade não pode ser nulo");
             RuleFor(x => x.Estado).NotEmpty().WithMessage("Campo estado não pode ser nulo");
+
             RuleFor(x => x.Email).NotEmpty().WithMessage("Campo email não pode ser nulo");
-            RuleFor(x => x.IdTipoDev).NotEmpty().WithMessage("Campo tipo de desenvolvedor não pode ser nulo");
+            RuleFor(x => x.Email).EmailAddress().WithMessage("Insira um e-mail válido");
+            RuleFor(x => x.Email).Must(x => x.Contains("@prosoft.com.br")).WithMessage("O domínio do e-mail deve ser @prosoft.com.br");
+
+            RuleFor(x => x.IdTipoDev).NotEmpty().NotNull().WithMessage("Campo tipo de desenvolvedor não pode ser nulo");
         }
     }
 }

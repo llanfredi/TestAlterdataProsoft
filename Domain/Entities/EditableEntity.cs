@@ -2,7 +2,7 @@
 {
     public class EditableEntity : NonEditableEntity
     {
-        public int? UpdatedBy { get; set; }
+        public string? UpdatedBy { get; set; }
         public DateTime? UpdatedDate { get; set; }
 
         protected EditableEntity() 

@@ -24,7 +24,7 @@ namespace Infrastructure.Mappings
             {
                 Id = Guid.NewGuid(),
                 DescTipoDev = "Estágiário",
-                CreatedBy = 1,
+                CreatedBy = Guid.NewGuid().ToString(),
                 CreatedDate = DateTime.Now,
                 Active = true,
             });
@@ -33,7 +33,7 @@ namespace Infrastructure.Mappings
             {
                 Id = Guid.NewGuid(),
                 DescTipoDev = "Júnior",
-                CreatedBy = 1,
+                CreatedBy = Guid.NewGuid().ToString(),
                 CreatedDate = DateTime.Now,
                 Active = true,
             });
@@ -42,7 +42,7 @@ namespace Infrastructure.Mappings
             {
                 Id = Guid.NewGuid(),
                 DescTipoDev = "Pleno",
-                CreatedBy = 1,
+                CreatedBy = Guid.NewGuid().ToString(),
                 CreatedDate = DateTime.Now,
                 Active = true,
             });
@@ -51,7 +51,7 @@ namespace Infrastructure.Mappings
             {
                 Id = Guid.NewGuid(),
                 DescTipoDev = "Sênior",
-                CreatedBy = 1,
+                CreatedBy = Guid.NewGuid().ToString(),
                 CreatedDate = DateTime.Now,
                 Active = true,
             });
@@ -60,7 +60,7 @@ namespace Infrastructure.Mappings
             {
                 Id = Guid.NewGuid(),
                 DescTipoDev = "Especialista",
-                CreatedBy = 1,
+                CreatedBy = Guid.NewGuid().ToString(),
                 CreatedDate = DateTime.Now,
                 Active = true,
             });

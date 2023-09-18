@@ -87,9 +87,9 @@ namespace Infrastructure.DB
                 entry.Property("UpdatedBy").CurrentValue = GetCurrentUser();
         }
 
-        private int GetCurrentUser() 
+        private string GetCurrentUser() 
         {
-            return Convert.ToInt32(_httpContextAccessor.HttpContext?.User?.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "1", CultureInfo.InvariantCulture);
+            return _httpContextAccessor.HttpContext?.User?.Identity?.Name?.ToString() ?? Guid.NewGuid().ToString();
         }
     }
 }
