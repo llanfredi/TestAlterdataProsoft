@@ -15,6 +15,8 @@ namespace Infrastructure.Validators
             RuleFor(x => x.Nome).NotEmpty().WithMessage("Campo nome não pode ser nulo");
             RuleFor(x => x.Endereco).NotEmpty().WithMessage("Campo endereço não pode ser nulo");
             RuleFor(x => x.Cidade).NotEmpty().WithMessage("Campo cidade não pode ser nulo");
+
+            RuleFor(x => x.Estado).MaximumLength(2).WithMessage("Campo estado deve ter no máximo 2 caracteres");
             RuleFor(x => x.Estado).NotEmpty().WithMessage("Campo estado não pode ser nulo");
 
             RuleFor(x => x.Email).NotEmpty().WithMessage("Campo email não pode ser nulo");
