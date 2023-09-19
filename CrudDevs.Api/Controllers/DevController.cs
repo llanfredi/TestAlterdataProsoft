@@ -23,31 +23,66 @@ namespace CrudDevs.Api.Controllers
         [HttpGet("DevTest/Dev")]
         public IActionResult Get()
         {
-            return Ok(_devService.GetAll());
+            try
+            {
+                return Ok(_devService.GetAll());
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
         }
 
         [HttpGet("DevTest/Dev/{id}")]
         public IActionResult Get([FromServices] string id)
         {
-            return Ok(_devService.GetById(new Guid(id)));
+            try
+            {
+                return Ok(_devService.GetById(new Guid(id)));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }  
         }
 
         [HttpPost("DevTest/Dev")]
         public IActionResult Post([FromBody] AddDevRequest command)
         {
-            return Ok(_mediator.Send(command));
+            try
+            {
+                return Ok(_mediator.Send(command));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
         }
 
         [HttpPut("DevTest/Dev")]
         public IActionResult Put([FromBody] UpdateDevRequest command)
         {
-            return Ok(_mediator.Send(command));
+            try
+            {
+                return Ok(_mediator.Send(command));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
         }
 
         [HttpDelete("DevTest/Dev")]
         public IActionResult Delete(DeleteDevRequest command)
         {
-            return Ok(_mediator.Send(command));
+            try
+            {
+                return Ok(_mediator.Send(command));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
         }
     }
 }

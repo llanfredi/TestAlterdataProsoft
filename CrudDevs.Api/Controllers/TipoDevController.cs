@@ -19,7 +19,16 @@ namespace CrudDevs.Api.Controllers
         [HttpGet("TipoDev/Dev")]
         public IActionResult Get()
         {
-            return Ok(_tipoDevService.GetAll());
+            try
+            {
+                return Ok(_tipoDevService.GetAll());
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
+
+            
         }
     }
 }
