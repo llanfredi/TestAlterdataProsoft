@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj" />
     <ProjectReference Include="..\Infrastructure.Configuration\Infrastructure.Configuration.csproj" />
     <ProjectReference Include="..\Infrastructure.IOC\Infrastructure.IOC.csproj" />
     <ProjectReference Include="..\Service\Service.csproj" />

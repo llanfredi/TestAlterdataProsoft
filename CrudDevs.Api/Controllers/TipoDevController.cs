@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using AutoMapper;
+using Domain.DTOs;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Service.Interface;
 
@@ -10,10 +12,12 @@ namespace CrudDevs.Api.Controllers
     public class TipoDevController : ControllerBase
     {
         private readonly ITipoDevService _tipoDevService;
+        private readonly IMapper _mapper;
 
-        public TipoDevController(ITipoDevService tipoDevService)
+        public TipoDevController(ITipoDevService tipoDevService, IMapper mapper)
         {
             _tipoDevService = tipoDevService;
+            _mapper = mapper;
         }
 
         [HttpGet("TipoDev/Dev")]
@@ -21,7 +25,7 @@ namespace CrudDevs.Api.Controllers
         {
             try
             {
-                return Ok(_tipoDevService.GetAll());
+                return Ok(_mapper.Map<TipoDevDto>(_tipoDevService.GetAll()));
             }
             catch (Exception ex)
             {

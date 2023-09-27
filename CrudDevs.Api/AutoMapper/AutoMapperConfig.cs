@@ -1,11 +1,7 @@
 ﻿using AutoMapper;
 using Domain.Commands.Requests;
+using Domain.DTOs;
 using Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Service.AutoMapper
 {
@@ -16,8 +12,10 @@ namespace Service.AutoMapper
             CreateMap<DevEntity, AddDevRequest>().ReverseMap();
             CreateMap<DevEntity, UpdateDevRequest>().ReverseMap();
             CreateMap<DevEntity, DeleteDevRequest>().ReverseMap();
-        }
 
-        
+            CreateMap<DevEntity, DevDto>().ForMember(x => x.DescTipoDev, dst => dst.MapFrom(src => src.TipoDev.DescTipoDev)).ReverseMap();
+
+            CreateMap<TipoDevEntity, TipoDevDto>().ReverseMap();
+        }
     }
 }

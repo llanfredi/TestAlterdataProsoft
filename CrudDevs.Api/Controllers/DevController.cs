@@ -1,4 +1,6 @@
+using AutoMapper;
 using Domain.Commands.Requests;
+using Domain.DTOs;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -13,11 +15,13 @@ namespace CrudDevs.Api.Controllers
     {
         private readonly IMediator _mediator;
         private readonly IDevService _devService;
+        private readonly IMapper _mapper;
 
-        public DevController(IMediator mediator, IDevService devService)
+        public DevController(IMediator mediator, IDevService devService, IMapper mapper)
         {
             _mediator = mediator;
             _devService = devService;
+            _mapper = mapper;
         }
 
         [HttpGet("DevTest/Dev")]
@@ -25,7 +29,7 @@ namespace CrudDevs.Api.Controllers
         {
             try
             {
-                return Ok(_devService.GetAll());
+                return Ok(_mapper.Map<List<DevDto>>(_devService.GetAll()));
             }
             catch (Exception ex)
             {
@@ -34,11 +38,11 @@ namespace CrudDevs.Api.Controllers
         }
 
         [HttpGet("DevTest/Dev/{id}")]
-        public IActionResult Get([FromServices] string id)
+        public IActionResult Get(string id)
         {
             try
             {
-                return Ok(_devService.GetById(new Guid(id)));
+                return Ok(_mapper.Map<DevDto>(_devService.GetById(new Guid(id))));
             }
             catch (Exception ex)
             {

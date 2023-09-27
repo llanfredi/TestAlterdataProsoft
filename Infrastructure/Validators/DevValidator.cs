@@ -1,5 +1,6 @@
 ﻿using Domain.Entities;
 using FluentValidation;
+using Infrastructure.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,8 @@ namespace Infrastructure.Validators
             RuleFor(x => x.Cidade).NotEmpty().WithMessage("Campo cidade não pode ser nulo");
 
             RuleFor(x => x.Estado).MaximumLength(2).WithMessage("Campo estado deve ter no máximo 2 caracteres");
+            RuleFor(x => BrazilStates.IsInState(x.Estado)).Must(x => x.Equals(true)).WithMessage("Informe um estado válido");
+
             RuleFor(x => x.Estado).NotEmpty().WithMessage("Campo estado não pode ser nulo");
 
             RuleFor(x => x.Email).NotEmpty().WithMessage("Campo email não pode ser nulo");
